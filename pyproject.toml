@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tcm-agent"
+version = "0.1.0"
+description = "中医辨证论治 Agent（医师辅助工具）"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+
+# 版本锁定见 docs/notes/version-lock.md
+# 与手册 §0 严格对齐；pydantic-ai 与 pydantic-graph 共用版本线，不能单独升
+dependencies = [
+    "pydantic-ai~=2.33",
+    "pydantic-graph==2.33.*",
+    "pydantic>=2.9",
+    "openai>=1.60",
+    "psycopg[binary]~=3.2",
+    "neo4j~=6.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "tiktoken>=0.7",
+]
+
+[project.optional-dependencies]
+retrieval = [
+    "sentence-transformers>=3.0",
+    "FlagEmbedding>=1.2",
+    "pgvector>=0.3",
+]
+lexical = ["jieba>=0.42"]
+evals = ["pydantic-evals==2.33.*"]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "ruff>=0.6"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"

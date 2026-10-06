@@ -1,0 +1,33 @@
+﻿# 分诊红旗词表 v0（手册 §5 S1）
+# 中医师签字确认后入正；命中即 level=red，拒诊不交给 LLM
+redflags:
+  - id: neuro_unconscious
+    category: 神志
+    patterns: ["神昏", "谵语", "意识不清", "抽搐", "昏迷"]
+  - id: cardiac_emergency
+    category: 心
+    patterns: ["剧烈胸痛", "胸闷压榨感", "心悸伴晕厥", "大汗淋漓"]
+  - id: massive_bleeding
+    category: 出血
+    patterns: ["大出血", "咯血", "呕血", "便血", "崩漏不止", "皮下大片瘀斑"]
+  - id: stroke_warning
+    category: 脑
+    patterns: ["中风先兆", "口眼歪斜", "言语不清", "半身不遂", "突发剧烈头痛"]
+  - id: respiratory_failure
+    category: 呼吸
+    patterns: ["呼吸困难", "喘促不能平卧", "口唇紫绀"]
+  - id: hyperthermia
+    category: 热
+    patterns: ["高热不退", "寒战高热"]
+  - id: special_preg_emergency
+    category: 特殊人群
+    patterns: ["妊娠.*腹痛", "妊娠.*阴道出血"]
+  - id: infant_under3
+    category: 特殊人群
+    patterns: ["婴幼儿", "小于3岁", "3岁以下"]
+  - id: acute_surgical
+    category: 其他
+    patterns: ["外伤", "骨折", "急腹症", "需手术"]
+  - id: suicidal
+    category: 其他
+    patterns: ["自杀", "自伤倾向"]
